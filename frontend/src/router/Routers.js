@@ -41,7 +41,7 @@ const Routers = () => {
 
         <Route path='/thank-you' element={<ThankYou/>}/>
 
-        {/* <Route path='/user/home' element={<UserHome/>}/> */}
+        {/* <Route path='/user/home' element={<UserHome/>}/>  illa */}
         <Route path='/user/works' element={<UserHome/>}/>
         <Route path='/user/works/:id' element={<UWorkDetails/>}/>
         <Route path='/user/works/search' element={<USearchResultList/>}/>

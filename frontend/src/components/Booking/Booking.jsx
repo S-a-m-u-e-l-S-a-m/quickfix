@@ -51,6 +51,7 @@ const Booking = ({ work, avgRating }) => {
       }
       navigate("/thank-you");
     } catch (err) {
+      // console.log(err)
       alert(err.message);
     }
   };

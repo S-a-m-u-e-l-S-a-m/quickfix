@@ -51,21 +51,21 @@ const AuthReducer = (state, action) => {
 
     case "WORKER_LOGIN_START":
       return {
-        ...state,
+        // ...state,
         worker: null,
         loading: true,
         error: null,
       };
     case "WORKER_LOGIN_SUCCESS":
       return {
-        ...state,
+        // ...state,
         worker: action.payload,
         loading: false,
         error: null,
       };
     case "WORKER_LOGIN_FAILURE":
       return {
-        ...state,
+        // ...state,
         worker: null,
         loading: false,
         error: action.payload,
@@ -80,7 +80,7 @@ const AuthReducer = (state, action) => {
       };
     case "WORKER_LOGOUT":
       return {
-        ...state,
+        // ...state,
         worker: null,
         loading: false,
         error: null,

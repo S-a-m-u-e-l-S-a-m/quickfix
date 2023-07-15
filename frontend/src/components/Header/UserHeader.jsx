@@ -85,7 +85,11 @@ const UserHeader = () => {
                 {user ? (
                   <>
                     {/* <h5 className="mb-0">{user.username}</h5> */}
-                    <h5 className="mb-0">{user.username && user.username.charAt(0).toUpperCase() + user.username.slice(1)}</h5>
+                    <h5 className="mb-0">
+                      {user.username &&
+                        user.username.charAt(0).toUpperCase() +
+                          user.username.slice(1)}
+                    </h5>
 
                     <Button className="btn primary__btn" onClick={logout}>
                       Logout

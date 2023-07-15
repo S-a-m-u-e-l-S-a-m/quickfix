@@ -26,61 +26,41 @@ export const getNotificationCount = async (req, res) => {
   }
 };
 
-// export const notificationData = async (req, res) => {
-//   const workId = req.params.workId; // Assuming the worker ID is part of the URL params
 
-//   try {
-//     // Find the work document by ID
-//     const work = await Work.findById(workId);
+export const notificationData = async (req, res) => {
+  const workId = req.params.workId; // Assuming the worker ID is part of the URL params
+  const page = parseInt(req.query.page);
 
-//     if (!work) {
-//       return res.status(404).json({ success: false, message: 'Worker not found' });
-//     }
+  // console.log(page);
 
-//     // Access the desired array field
-//     const data = work.notifications;
+  try {
+    // Find the worker document by ID and populate the notifications
+    const worker = await Work.findById(workId)
+      .populate("notifications")
+      .skip(page * 8)
+      .limit(8);
 
-//     res.status(200).json({ success: true, data: data });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ success: false, message: 'Failed to retrieve work data' });
-//   }
-// };
+    if (!worker) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Worker not found" });
+    }
 
-// export const notificationData = async (req, res) => {
-//   const workId = req.params.workId; // Assuming the worker ID is part of the URL params
-//   const page = parseInt(req.query.page);
+    // Access the populated notifications array
+    const notifications = worker.notifications;
 
-//   // console.log(page);
-
-//   try {
-//     // Find the worker document by ID and populate the notifications
-//     const worker = await Work.findById(workId)
-//       .populate("notifications")
-//       .skip(page * 8)
-//       .limit(8);
-
-//     if (!worker) {
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Worker not found" });
-//     }
-
-//     // Access the populated notifications array
-//     const notifications = worker.notifications;
-
-//     res
-//       .status(200)
-//       .json({
-//         success: true,
-//         count: notifications.length,
-//         message: "Successfull",
-//         data: notifications,
-//       });
-//   } catch (error) {
-//     console.error(error);
-//     res
-//       .status(500)
-//       .json({ success: false, message: "Failed to retrieve notifications" });
-//   }
-// };
+    res
+      .status(200)
+      .json({
+        success: true,
+        count: notifications.length,
+        message: "Successfull",
+        data: notifications,
+      });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to retrieve notifications" });
+  }
+};

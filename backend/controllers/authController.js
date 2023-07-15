@@ -151,7 +151,7 @@ export const workerlogin = async (req, res) => {
       { expiresIn: "15d" }
     );
 
-    //set token in browser cookies
+    // set token in browser cookies
     res
       .cookie("accessToken", token, {
         httpOnly: true,

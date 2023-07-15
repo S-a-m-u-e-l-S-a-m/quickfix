@@ -6,6 +6,13 @@ import "./worker-card.css";
 const UserBookingCard = ({ userbooking }) => {
   const { /*id,*/ fullName, location, phone, bookAt } = userbooking;
 
+  const dateString = bookAt;
+  const date = new Date(dateString);
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // Month value is zero-based, so add 1
+  const day = date.getDate();
+
   return (
     <>
       <div className="worker__card">
@@ -37,7 +44,8 @@ const UserBookingCard = ({ userbooking }) => {
             <div className="card__top d-flex align-items-center justify-content-between">
               <span className="worker__location d-flex align-items-center gap-1">
                 <i class="ri-calendar-line"></i>
-                {bookAt}
+                {/* {`${day}-${month}-${year}`} */}
+                {`${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`}
               </span>
             </div>
 
