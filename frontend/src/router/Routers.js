@@ -17,6 +17,7 @@ import UserHome from '../pages/UserHome'
 import WorkerHome from '../pages/WorkerHome'
 
 import UWorkDetails from './../pages/UWorkDetails'
+import USearchResultList from '../pages/USearchResultList'
 
 
 const Routers = () => {
@@ -43,8 +44,12 @@ const Routers = () => {
         {/* <Route path='/user/home' element={<UserHome/>}/> */}
         <Route path='/user/works' element={<UserHome/>}/>
         <Route path='/user/works/:id' element={<UWorkDetails/>}/>
+        <Route path='/user/works/search' element={<USearchResultList/>}/>
+
+
 
         <Route path='/worker/notification' element={<WorkerHome/>}/>
+        
 
 
         

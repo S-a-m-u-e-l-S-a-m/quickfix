@@ -15,9 +15,9 @@ export const userregister = async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hash,
-      phoneno: req.body.phoneno,
-      location: req.body.location,
-      zipcode: req.body.zipcode,
+      // phoneno: req.body.phoneno,
+      // location: req.body.location,
+      // zipcode: req.body.zipcode,
     });
 
     await newUser.save();

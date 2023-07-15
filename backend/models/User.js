@@ -11,14 +11,14 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    phoneno: {
-      type: Number,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
+    // phoneno: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // location: {
+    //   type: String,
+    //   required: true,
+    // },
     password: {
       type: String,
       required: true,
@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     
-    zipcode: {
-      type: Number,
-      required: true,
-    },
+    // zipcode: {
+    //   type: Number,
+    //   required: true,
+    // },
   },
   { timestamps: true }
 );

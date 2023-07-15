@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import { useLocation } from "react-router-dom";
-import WorkerCard from "../shared/WorkerCard";
-// import SearchBar from "../shared/SearchBar";
-import Header from '../components/Header/Header'
+// import WorkerCard from "../shared/WorkerCard";
 
 
-
-const SearchResultList = () => {
+import UserHeader from '../components/Header/UserHeader'
+// import UserSearchBar from './../shared/UserSearchBar'
+import UserWorkerCard from "../shared/UserWorkerCard";
+const USearchResultList = () => {
   const location = useLocation();
 
   const [data] = useState(location.state);
@@ -17,11 +17,11 @@ const SearchResultList = () => {
 
   return (
     <>
-    <Header />
+    <UserHeader />
     {/* <section>
         <Container>
           <Row>
-            <SearchBar />
+            <UserSearchBar />
           </Row>
         </Container>
       </section> */}
@@ -34,7 +34,7 @@ const SearchResultList = () => {
               data?.map(worker => (
                 <Col lg="6" className="mb-4" key={worker._id}>
                   
-                  <WorkerCard worker={worker} />
+                  <UserWorkerCard worker={worker} />
                 </Col>
               ))
             )}
@@ -45,4 +45,4 @@ const SearchResultList = () => {
   );
 };
 
-export default SearchResultList;
+export default USearchResultList;

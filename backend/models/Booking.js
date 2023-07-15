@@ -13,15 +13,15 @@ const bookingSchema = new mongoose.Schema(
     userEmail: {
        type: String
     },
-    FullName: {
+    fullName: {
       type: String,
       required: true,
     },
-    Location: {
+    location: {
       type: String,
       required: true,
     },
-    Phone: {
+    phone: {
       type: Number,
       required: true,
     },

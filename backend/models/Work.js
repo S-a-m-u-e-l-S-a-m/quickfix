@@ -5,7 +5,6 @@ const workSchema = new mongoose.Schema(
     service: {
       type: String,
       required: true,
-      
     },
     workername: {
       type: String,
@@ -20,7 +19,7 @@ const workSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    gender :{
+    gender: {
       type: String,
       required: true,
     },
@@ -50,12 +49,12 @@ const workSchema = new mongoose.Schema(
       type: String,
       default: "worker",
     },
-    // notifications: [
-    //   {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "Booking",
-    //   },
-    // ],
+    notifications: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Booking",
+      },
+    ],
 
     reviews: [
       {

@@ -65,7 +65,7 @@ export const getSingleWork = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const work = await Work.findById(id).populate('reviews')    ;
+    const work = await Work.findById(id).populate("reviews");
     res.status(200).json({
       success: true,
       message: "Successfull",
@@ -80,11 +80,11 @@ export const getSingleWork = async (req, res) => {
 export const getAllWork = async (req, res) => {
   //for pagination
   const page = parseInt(req.query.page);
-  console.log(page);
+  // console.log(page);
 
   try {
     const works = await Work.find({})
-      .populate('reviews')
+      .populate("reviews")
       .skip(page * 8)
       .limit(8);
     res.status(200).json({
@@ -109,7 +109,8 @@ export const getWorkBySearch = async (req, res) => {
       location,
       service,
       zipcode: { $eq: zipcode },
-    }).populate('reviews');
+    });
+    // .populate('reviews');
 
     res.status(200).json({
       success: true,
@@ -124,8 +125,9 @@ export const getWorkBySearch = async (req, res) => {
 // get available work
 export const getAvailableWorks = async (req, res) => {
   try {
-    const works = await Work.find({ available: true }).populate('reviews')
-    .limit(8);
+    const works = await Work.find({ available: true })
+      .populate("reviews")
+      .limit(8);
     res.status(200).json({
       success: true,
       count: works.length,
@@ -137,14 +139,13 @@ export const getAvailableWorks = async (req, res) => {
   }
 };
 
-
 //get work counts
-export const getWorkCount = async(req,res)=>{
-    try{
-      const workCount = await Work.estimatedDocumentCount()
+export const getWorkCount = async (req, res) => {
+  try {
+    const workCount = await Work.estimatedDocumentCount();
 
-      res.status(200).json({success:true, data:workCount})
-    } catch(err){
-      res.status(500).json({success:false, message:"failed to fetch" })
-    }
-}
+    res.status(200).json({ success: true, data: workCount });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "failed to fetch" });
+  }
+};

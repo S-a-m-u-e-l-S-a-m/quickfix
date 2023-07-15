@@ -5,7 +5,7 @@ import { Col, Form, FormGroup } from "reactstrap";
 import { BASE_URL } from "./../utils/config";
 import { useNavigate } from "react-router-dom";
 
-const SearchBar = () => {
+const UserSearchBar = () => {
   const locationRef = useRef("");
   const serviceRef = useRef("");
   const zipcodeRef = useRef(0);
@@ -29,7 +29,7 @@ const SearchBar = () => {
     const result = await res.json();
 
     navigate(
-      `/works/search?location=${location}&service=${service}&zipcode=${zipcode}`,
+      `/user/works/search?location=${location}&service=${service}&zipcode=${zipcode}`,
       { state: result.data }
     );
   };
@@ -85,4 +85,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default UserSearchBar;
