@@ -1,15 +1,22 @@
 import { createContext, useEffect, useReducer } from "react";
 
-const initial_state = {
-  user:
-    localStorage.getItem("user") !== undefined
-      ? JSON.parse(localStorage.getItem("user"))
-      : null,
-  worker:
-    localStorage.getItem("worker") !== undefined
-      ? JSON.parse(localStorage.getItem("worker"))
-      : null,
+// const initial_state = {
+//   user:
+//     localStorage.getItem("user") !== undefined
+//       ? JSON.parse(localStorage.getItem("user"))
+//       : null,
+//   worker:
+//     localStorage.getItem("worker") !== undefined
+//       ? JSON.parse(localStorage.getItem("worker"))
+//       : null,
   
+//   loading: false,
+//   error: null,
+// };
+
+const initial_state = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  worker: JSON.parse(localStorage.getItem("worker")) || null,
   loading: false,
   error: null,
 };
@@ -20,30 +27,35 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
       return {
+        ...state,
         user: null,
         loading: true,
         error: null,
       };
     case "LOGIN_SUCCESS":
       return {
+        ...state,
         user: action.payload,
         loading: false,
         error: null,
       };
     case "LOGIN_FAILURE":
       return {
+        ...state,
         user: null,
         loading: false,
         error: action.payload,
       };
     case "REGISTER_SUCCESS":
       return {
+        ...state,
         user: null,
         loading: false,
         error: null,
       };
     case "LOGOUT":
       return {
+        ...state,
         user: null,
         loading: false,
         error: null,
@@ -51,28 +63,28 @@ const AuthReducer = (state, action) => {
 
     case "WORKER_LOGIN_START":
       return {
-        // ...state,
+        ...state,
         worker: null,
         loading: true,
         error: null,
       };
     case "WORKER_LOGIN_SUCCESS":
       return {
-        // ...state,
+        ...state,
         worker: action.payload,
         loading: false,
         error: null,
       };
     case "WORKER_LOGIN_FAILURE":
       return {
-        // ...state,
+        ...state,
         worker: null,
         loading: false,
         error: action.payload,
       };
     case "WORKER_REGISTER_SUCCESS":
       return {
-        // ...state,
+        ...state,
         worker: null,
 
         loading: false,
@@ -80,7 +92,7 @@ const AuthReducer = (state, action) => {
       };
     case "WORKER_LOGOUT":
       return {
-        // ...state,
+        ...state,
         worker: null,
         loading: false,
         error: null,

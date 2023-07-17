@@ -12,7 +12,7 @@ import { BASE_URL } from "./../utils/config";
 
 const WorkerHome = () => {
   const { worker } = useContext(AuthContext);
-  //  console.log(worker?._id)
+ 
   const workId = worker?._id;
   // console.log(workId)
   const [pageCount, setPageCount] = useState(0);
