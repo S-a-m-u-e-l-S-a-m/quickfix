@@ -36,27 +36,41 @@ const WorkerHome = () => {
   //   window.scrollTo(0, 0);
   // }, [page, notificationCount,notifications]);
   useEffect(() => {
-    
-
-    // console.log("Notifications:", notifications);
-
     if (notifications) {
       const sortedNotifications = [...notifications].sort((a, b) => {
         const dateA = new Date(a.bookAt);
         const dateB = new Date(b.bookAt);
         return dateB.getTime() - dateA.getTime();
       });
-      // console.log("Notifications:", notifications);
-      // console.log("Sorted Notifications:", sortedNotifications);
-
-      const pages = Math.ceil(sortedNotifications.length / 8);
+  
+      const filteredNotifications = sortedNotifications.filter(
+        (notification) => {
+          const currentDate = new Date();
+          const bookingDate = new Date(notification.bookAt);
+          return bookingDate >= currentDate;
+        }
+      );
+      console.log(filteredNotifications)
+  
+      const pages = Math.ceil(filteredNotifications.length / 8);
       setPageCount(pages);
     }
-
-    // console.log("Inside useEffect");
   }, [notifications]);
 
-  const paginatedNotifications = notifications?.slice(page * 8, (page + 1) * 8);
+  const sortedNotifications = [...notifications].sort((a, b) => {
+    const dateA = new Date(a.bookAt);
+    const dateB = new Date(b.bookAt);
+    return dateA.getTime() - dateB.getTime();
+  });
+
+  // const paginatedNotifications = notifications?.slice(page * 8, (page + 1) * 8);
+  const filteredNotifications = sortedNotifications?.filter((notification) => {
+    const currentDate = new Date();
+    const bookingDate = new Date(notification.bookAt);
+    return bookingDate >= currentDate;
+  });
+
+  console.log(filteredNotifications)
 
   return (
     <>
@@ -72,7 +86,7 @@ const WorkerHome = () => {
                 <Col lg="6" className="mb-4" key={userbooking._id}>
                   <UserBookingCard userbooking={userbooking} />
                 </Col> */}
-              {paginatedNotifications?.map((userbooking) => (
+              {filteredNotifications?.map((userbooking) => (
                 <Col lg="6" className="mb-4" key={userbooking._id}>
                   <UserBookingCard userbooking={userbooking} />
                 </Col>

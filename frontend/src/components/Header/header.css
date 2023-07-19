@@ -8,12 +8,14 @@
 }
 
 .logo img {
-    width: 55%;
-    /* width: 180px; */
+    margin-left: -58px;
+    /* width: 55%; */
+    width: 50%;
     /* height:65px; */
 }
 
 .menu{
+    
     margin-bottom: 0;
 }
 
@@ -44,7 +46,7 @@
     line-height: 80px;
     background: #fff;
     position: sticky;
-    top: 0;
+    top: -2px;
     left: 0;
     box-shadow: 3px 3px 8px -3px #ddd;
     z-index: 999;

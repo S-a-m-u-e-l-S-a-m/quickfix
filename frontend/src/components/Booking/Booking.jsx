@@ -123,7 +123,9 @@ const Booking = ({ work, avgRating }) => {
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
           Book Now
         </Button>
-        <Button className="btn primary__btn w-100 mt-4">Negotiate</Button>
+        <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+          Negotiate
+        </Button>
       </div>
     </div>
   );
